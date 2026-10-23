@@ -1,0 +1,29 @@
+---
+title: "Pesquisa Reprodutível com R"
+author: "Davi Athaydes Leite"
+institute: "11º Seminário Discente do IESP-UERJ"
+date: "2026-10-28"
+format:
+  beamer:
+    pdf-engine: lualatex
+    theme: "Rochester"
+    colortheme: "dolphin"
+    fonttheme: "professionalfonts"
+linkcolor: blue
+fontsize: 10pt
+lang: pt-BR
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+library(tidyverse)
+library(showtext)
+
+font_add_google("Lora", "lora")
+showtext_auto()
+```
+
+# Primeiro slide
+
+------------------------------------------------------------

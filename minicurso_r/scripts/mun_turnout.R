@@ -6,7 +6,7 @@ library(DBI)
 library(duckdb)
 library(R.utils)
 library(here)
-source(here::here("minicurso_r/download_tse.R"))
+source(here::here("minicurso_r/scripts/download_tse.R"))
 
 #---------------------------------------------------------------------------#
 
