@@ -11,6 +11,7 @@ format:
     fonttheme: "professionalfonts"
 linkcolor: blue
 fontsize: 10pt
+bibliography: referencias.bib
 lang: pt-BR
 ---
 
@@ -23,6 +24,49 @@ library(showtext)
 font_add_google("Lora", "lora")
 showtext_auto()
 ```
+
+# Por que falar de reprodutibilidade?
+
+@avelino2021transparency tentaram reproduzir os artigos publicados entre 2012 e 2016 nos cinco principais periódicos de ciência política e ciências sociais do Brasil.
+
+:::: {.columns}
+
+::: {.column width="48%"}
+\small
+
+- Dos **197 artigos quantitativos**, só **10** foram totalmente replicados: cerca de **5%**.
+
+- Entre os 28 com dados e código completos, o problema mais frequente estava no **código**: incompleto, com erros ou sem documentação.
+:::
+
+::: {.column width="52%"}
+```{r}
+#| label: funil-replicacao
+#| fig-width: 2.6
+#| fig-height: 1.6
+
+funil <- tibble(
+  etapa = c("Artigos analisados", "Quantitativos", "Compartilharam dados",
+            "Dados e código completos", "Totalmente replicados"),
+  n = c(650, 197, 56, 28, 10)
+) |>
+  mutate(etapa = fct_rev(fct_inorder(etapa)))
+
+ggplot(funil, aes(x = n, y = etapa)) +
+  geom_col(fill = "#3B4BA0", width = 0.7) +
+  geom_text(aes(label = n), hjust = -0.2, size = 2.6, family = "lora") +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.18))) +
+  labs(x = NULL, y = NULL) +
+  theme_minimal(base_family = "lora", base_size = 8) +
+  theme(panel.grid = element_blank(), axis.text.x = element_blank())
+```
+:::
+
+::::
+
+Os casos replicados tinham em comum **dados e código bem organizados**. É disso que trata este curso.
+
+------------------------------------------------------------
 
 # Roteiro do curso
 
@@ -167,3 +211,10 @@ O resultado é um painel **município × turno × eleição**.
 # Prática 3
 
 **`scripts/participacao_eleitoral.R`**: do DuckDB ao painel de comparecimento
+
+------------------------------------------------------------
+
+# Referências
+
+::: {#refs}
+:::

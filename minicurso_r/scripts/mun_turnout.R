@@ -1,6 +1,4 @@
-
-library(dplyr)
-library(tidyr)
+library(tidyverse)
 library(duckplyr)
 library(DBI)
 library(duckdb)
