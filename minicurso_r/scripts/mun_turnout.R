@@ -1,3 +1,6 @@
+
+# Pacotes e função auxiliar ----
+
 library(tidyverse)
 library(duckplyr)
 library(DBI)
@@ -6,16 +9,18 @@ library(R.utils)
 library(here)
 source(here::here("minicurso_r/scripts/download_tse.R"))
 
-#---------------------------------------------------------------------------#
+
+# Diretório e coleta dos dados ----
+
 
 if(!dir.exists(here::here("minicurso_r/data/dados_brutos/mun_turnout"))) dir.create(here::here("minicurso_r/data/dados_brutos/mun_turnout"), recursive = TRUE)
 
 download_tse(file_name = "detalhe_votacao_munzona", years = seq(1998, 2024, 2), unzip_path = here::here("minicurso_r/data/dados_brutos/mun_turnout"))
 
-#############################################################################
-#############################################################################
+# Tratamento principal ----
 
 lista_df <- list()
+
 for (x in list.files(here::here("minicurso_r/data/dados_brutos/mun_turnout"), full.names = TRUE)){
   print(x)
   
@@ -51,7 +56,8 @@ mun_turnout <- lista_df |>
       toupper()
   )
 
-#---------------------------------------------------------------------------#
+
+# Base tratada ----
 
 if(!dir.exists(here::here("minicurso_r/data/tratados"))) dir.create(here::here("minicurso_r/data/tratados"), recursive = TRUE)
 
